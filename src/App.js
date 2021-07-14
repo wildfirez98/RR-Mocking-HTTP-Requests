@@ -25,10 +25,12 @@ function App() {
       </Row>
 
       <Row className="justify-content-center">
-        <Col sm={3}>
+        <Col>
           <h1>{gitHubName}</h1>
         </Col>
-        <Col sm={3}>
+      </Row>
+      <Row>
+        <Col>
           <button href={gitHubURL}>Link to GitHub profile</button>
         </Col>
       </Row>
