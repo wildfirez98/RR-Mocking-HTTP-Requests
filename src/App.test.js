@@ -11,13 +11,21 @@ describe('receives values from GitHub REST API using jest fetch mock', () => {
   test("receives GitHub name", async () => {
     fetch.mockResponseOnce(JSON.stringify({name: 'coder'}))
     render(<App />)
-    const gitHubName = await waitFor(() => screen.getByRole('heading', { level: 1 }))
+    const gitHubName = await waitFor(() => screen.getByRole('heading', { level: 2 }))
     expect(gitHubName).toHaveTextContent('coder')
   })
   test("receives GitHub URL", async () => {
     fetch.mockResponseOnce(JSON.stringify({html_url: 'https://github.com/learningToCode1234'}))
     render(<App />)
-    const gitHubURL = await waitFor(() => screen.getByText('Link to GitHub profile'))
-    expect(gitHubURL).toHaveAttribute('href', 'https://github.com/learningToCode1234')
+    const gitHubURL = await waitFor(() => screen.getByRole('link'))
+    expect(gitHubURL).toHaveAttribute('href', expect.stringContaining('github.com'))
+  })
+
+  // Bonus
+  test("receives GitHub Image URL", async () => {
+    fetch.mockResponseOnce(JSON.stringify({avatar_url: 'https://avatars.githubusercontent.com/u/87375911?v=4'}))
+    render(<App />)
+    const gitHubURL = await waitFor(() => screen.getByAltText('Github profile image'))
+    expect(gitHubURL).toHaveAttribute('src', expect.stringContaining('githubusercontent'))
   })
 })

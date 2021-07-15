@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
 
 
 function App() {
   const [gitHubName, setGitHubName] = useState('')     
-  const [gitHubURL, setGitHubURL] = useState('')                    
+  const [gitHubURL, setGitHubURL] = useState('')   
+  // Bonus
+  const [gitHubImageURL, setGitHubImageURL] = useState('')              
 
 
   useEffect(() => {
@@ -15,25 +15,21 @@ function App() {
       .then(data => {
         setGitHubName(data.name)
         setGitHubURL(data.html_url)
+        setGitHubImageURL(data.avatar_url)
       })
   }, [])
 
   return (
     <div className="App">
-      <Row>
-        <Col>Github Profile Info:</Col>
-      </Row>
-
-      <Row className="justify-content-center">
-        <Col>
-          <h1>{gitHubName}</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <button href={gitHubURL}>Link to GitHub profile</button>
-        </Col>
-      </Row>
+      <div>
+        <h1>Github Profile Info:</h1>
+        <h2>{gitHubName}</h2>
+        <a href={gitHubURL}><button>Link to GitHub profile</button></a>
+      </div>
+      {/* Bonus */}
+      <div className="pt-5">
+        <img src={gitHubImageURL} alt='Github profile image' />
+      </div>
     </div>
   );
 }
