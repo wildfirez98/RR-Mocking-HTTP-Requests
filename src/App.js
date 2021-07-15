@@ -5,7 +5,7 @@ import './App.css'
 function App() {
   const [gitHubName, setGitHubName] = useState('')     
   const [gitHubURL, setGitHubURL] = useState('')   
-  // Bonus
+  // For Bonus
   const [gitHubImageURL, setGitHubImageURL] = useState('')              
 
 
@@ -26,12 +26,12 @@ function App() {
         <h2>{gitHubName}</h2>
         <a href={gitHubURL}><button>Link to GitHub profile</button></a>
       </div>
-      {/* Bonus */}
+      {/* For Bonus */}
       <div className="pt-5">
-        <img src={gitHubImageURL} alt='Github profile image' />
+        <img src={gitHubImageURL} alt='Github profile image' width='200' height='200'/>
       </div>
     </div>
   );
 }
 
-export default App;
+export default App

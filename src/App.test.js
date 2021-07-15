@@ -21,7 +21,7 @@ describe('receives values from GitHub REST API using jest fetch mock', () => {
     expect(gitHubURL).toHaveAttribute('href', expect.stringContaining('github.com'))
   })
 
-  // Bonus
+  // For Bonus
   test("receives GitHub Image URL", async () => {
     fetch.mockResponseOnce(JSON.stringify({avatar_url: 'https://avatars.githubusercontent.com/u/87375911?v=4'}))
     render(<App />)
